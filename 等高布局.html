@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>等高布局</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #wrap{
+            width: 900px;
+            margin: 50px auto;             /*水平居中*/
+            overflow: hidden;              /*解决高度塌陷*/
+            background: mediumpurple;
+        }
+        #left,#right{
+            float: left;
+            /*等高布局核心（伪等高）：
+				padding-bottom 用于使视觉效果实现填充落差部分，margin-bottom 用于“截除”填充后超出部分 ；
+				margin-bottom 的值为负，意思是在文档流中腾出一部分空间，如果其后有元素则后面元素会向上靠拢，对比为正值时可
+				把父元素的 content-box（内容区） 的下边距往下挤
+			*/
+            padding-bottom: 10000px;
+            margin-bottom: -10000px;
+        }
+        #left{
+            background: greenyellow;
+            width: 200px;
+        }
+        #right{
+            background: yellowgreen;
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="left">
+            left<br>
+            left<br>
+            left<br>
+            left<br>
+            left<br>
+            left<br>
+        </div>
+        <div id="right">
+            right <br>
+            right <br>
+            right <br>
+        </div>
+    </div>
+</body>
+</html>

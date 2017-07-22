@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双飞翼布局</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            min-width: 600px;    /*页面宽度小于600px时出现滚动条*/
+        }
+        #header,#footer{
+            height: 50px;
+            background: grey;
+			text-align: center;
+            line-height: 50px;
+        }
+        #container{
+            overflow: hidden;    /*此处无法解决高度塌陷问题，用于实现等高布局效果*/
+        }
+        #con_inner{
+            margin: 0 200px;     /*使子元素往中间挤*/
+        }
+        #middle{
+            width: 100%;                /*宽度自适应*/
+            background: mediumpurple;
+            float: left;
+        }
+        #left,#right{
+            width: 200px;              
+            background: greenyellow;
+            float: left;
+        }
+        #left{
+            margin-left: -100% ;      /*把left移到父元素行首，由于middle独占一行，把left挤到了下一行，本来是紧贴在middle的最右端*/
+            position: relative;       /*通过相对定位把left定位到container使用padding腾出来的地方，right亦同*/
+            left: -200px;
+        }
+        #right{
+            margin-left:-200px;        /*把right移到父元素行末 */
+            position: relative;
+            right: -200px;
+        }
+		/*等高布局核心代码*/
+		#left,#right,middle{
+			padding-bottom: 10000px;
+            margin-bottom: -10000px;
+		}
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="container">
+        <div id="con_inner">
+            <div id="middle">
+                middle <br>
+                middle <br>
+                middle <br>
+                middle <br>
+                middle <br>
+                middle <br>
+            </div>
+            <div id="left">
+                left <br>
+            </div>
+            <div id="right">
+                right
+            </div>
+        </div>
+    </div>
+    <div id="footer">footer</div>
+</body>
+</html>
