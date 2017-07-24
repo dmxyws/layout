@@ -1,5 +1,5 @@
-## layout    
-###1.圣杯布局  
+# layout    
+#### 1. 圣杯布局  
 1. HTML结构：
 ```
 	<div id='header'></div>
@@ -24,13 +24,13 @@
 ```
  
 
-###2.双飞翼布局
+#### 2. 双飞翼布局
 1. HTML结构：与圣杯布局的区别在于，在 container 里面加了一个 `<div id='con_inner'></div>` 用于包裹其原来的子元素
 2. CSS：container 上的 overflow: hidden 不再是用于解决高度塌陷问题，而是为了实现等高布局效果；给 con_inner 设置 margin: 0 200px;使子元素往中间挤，其他样式与圣杯布局相同；（ps：也可把 container 上的 overflow: hidden 设置给 con_inner）
 3. 弊端：（1）.会改变原本的结构；（2）.如果把 overflow: hidden 设置给 container 则 con_inner 上的高度塌陷问题没有解决
 
 
-###3.等高布局
+#### 3. 等高布局
 1. 核心代码
 ```
 #middle,#left,#right{
